@@ -1,0 +1,48 @@
+<html>
+
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src='spectrum.js'></script>
+	<link rel='stylesheet' href='spectrum.css' />
+</head>
+
+<style type="text/css">
+.sp-picker-container {
+	display: inline !important;
+	position: top right;
+}
+#dress-block {
+	width: 495px;
+	display: inline-block;
+	background-image: url('dress-bg.png');
+}
+#dress-inner {
+	width: 495px;
+}
+</style>
+
+<body>
+
+<div id="dress-block">
+	<div id="dress-inner">
+		<img src="thedress.png">
+	</div>
+</div>
+<input type='text' id="flat" />
+
+<script type="text/javascript">
+$("#flat").spectrum({
+	flat: true,
+	showInput: true,
+	allowEmpty:true,
+	move: function(tinycolor){
+		if (tinycolor === null)
+			$('#dress-inner').css('background-color', "");	
+		else
+			$('#dress-inner').css('background-color', tinycolor.toHexString())
+	}
+});
+</script>	
+</body>
+
+</html>
