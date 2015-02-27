@@ -7,9 +7,11 @@
 </head>
 
 <style type="text/css">
-.sp-picker-container {
-	display: inline !important;
-	position: top right;
+body {
+	font-family: "Arial"
+}
+.sp-container {
+	vertical-align: top;
 }
 #dress-block {
 	width: 495px;
@@ -30,19 +32,26 @@
 </div>
 <input type='text' id="flat" />
 <div>
-Colorpicker by <a href="https://github.com/bgrins/spectrum">@bgrins</a>.
+A quick tester to see if background color can affect the white-gold perception of the dress. Colorpicker by <a href="https://github.com/bgrins/spectrum">@bgrins</a>.
 </div>
 
 <script type="text/javascript">
 $("#flat").spectrum({
 	flat: true,
 	showInput: true,
+	showAlpha: true,
 	allowEmpty:true,
 	move: function(tinycolor){
 		if (tinycolor === null)
+		{
 			$('#dress-inner').css('background-color', "");	
+		}
 		else
-			$('#dress-inner').css('background-color', tinycolor.toHexString())
+		{
+			var color = tinycolor.toRgb();
+			var colorStr = "rgba(" + color.r + ", " + color.g + "," + color.b + "," + color.a + ")";
+			$('#dress-inner').css('background-color', colorStr);
+		}
 	}
 });
 </script>	
